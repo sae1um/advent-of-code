@@ -28,7 +28,6 @@ for(i = 0; i <= leftList.length - 1; i++){
 //easier to read than above for loop
 // const distances = leftList.map((element, index) => Math.abs(element - rightList[index]));
 
-// print(distances.length);
 distances.forEach(element => total += element);
 
 print(total);
