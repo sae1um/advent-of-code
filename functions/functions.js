@@ -1,5 +1,10 @@
+const fs = require("fs");
+
 function print(input){
     console.log(input);
 }
 
-module.exports = print
+function readFile(file){
+    return fs.readFileSync(file, "utf-8");
+}
+module.exports = {print, readFile}

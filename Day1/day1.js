@@ -1,7 +1,8 @@
-const print = require("../functions/functions.js");
+const {print, readFile} = require("../functions/functions.js");
 const fs = require("fs");
 
-const file = fs.readFileSync("input1.txt", "utf-8");
+// const file = fs.readFileSync("input1.txt", "utf-8");
+const file = readFile("input1.txt");
 const allIDs = file.replaceAll("\n", "   ").split("   ");
 
 const rightList = []; //odd indexex
