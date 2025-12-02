@@ -1,35 +1,23 @@
-const print = require("../functions/functions.js");
-const fs = require("fs");
+const { print, inputFile } = require("../functions.js");
 
-const file = fs.readFileSync("input1.txt", "utf-8");
-const allIDs = file.replaceAll("\n", "   ").split("   ");
+const input = inputFile("./Day1/input.txt").split("\n");
 
-const rightList = []; //odd indexes
-const leftList = []; //even indexes
-let score = 0;
+let dialPos = 50;
+let zeroCount = 0;
 
-for(i = 0; i < allIDs.length; i++){
-    // Pushes odd indexes to right list
-    if(i % 2 > 0){
-        rightList.push(allIDs[i]);
-        continue;
-    }
-    leftList.push(allIDs[i]);
-}
+input.forEach((el) => {
+    const turns = parseInt(el.slice(1));
 
-rightList.sort();
-leftList.sort();
-
-for(i = 0; i <= leftList.length - 1; i++){
-    let counter = 0;
-    for(j = 0; j <= rightList.length - 1; j++){
-        if(leftList[i] == rightList[j]){
-            counter++;
+    for (let i = 0; i <= turns; i++) {
+        if (el[0] == "L") {
+            dialPos -= 1;
+        } else {
+            dialPos += 1;
+        }
+        if (Math.abs(dialPos % 100) == 0) {
+            zeroCount++;
         }
     }
-    if(counter > 0){
-        score += leftList[i] * counter;
-    }
-}
+});
 
-print(score);
+print(zeroCount);
