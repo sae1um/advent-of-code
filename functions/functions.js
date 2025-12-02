@@ -4,7 +4,9 @@ function print(input){
     console.log(input);
 }
 
-function readFile(file){
-    return fs.readFileSync(file, "utf-8");
+const parseFile = (file) => {
+    fs.readFileSync(file, "utf-8");
+    const f = file.split(" ");
+    return f;
 }
-module.exports = {print, readFile}
+module.exports = {print, parseFile}
